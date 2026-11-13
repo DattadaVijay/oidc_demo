@@ -1,0 +1,12 @@
+
+# Terraform downloads and local state
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+crash.*.log
+
+# Local variable values
+*.tfvars
+*.tfvars.json

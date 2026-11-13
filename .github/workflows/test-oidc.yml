@@ -1,0 +1,36 @@
+name: Test OIDC connection
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    env:
+      DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
+      DATABRICKS_AUTH_TYPE: azure-cli
+
+    steps:
+      - name: Login to Entra using GitHub OIDC
+        uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          allow-no-subscriptions: true
+
+      - name: Install Databricks CLI
+        uses: databricks/setup-cli@main
+
+      - name: Check Databricks CLI version
+        run: databricks version
+
+      - name: Test Databricks authentication
+        run: databricks current-user me
