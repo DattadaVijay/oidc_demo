@@ -1,4 +1,3 @@
-cat > .github/workflows/test-oidc.yml <<'EOF'
 name: Test OIDC connection
 
 on:
@@ -35,4 +34,3 @@ jobs:
 
       - name: Test Databricks authentication
         run: databricks current-user me
-EOF
