@@ -28,7 +28,7 @@ resource "azuread_application_federated_identity_credential" "github" {
   issuer    = "https://token.actions.githubusercontent.com"
   audiences = ["api://AzureADTokenExchange"]
 
-  subject = "repo:DattadaVijay@190878883/oidc_demo@1456956323:ref:refs/heads/main""
+  subject = "repo:DattadaVijay@190878883/oidc_demo@1456956323:ref:refs/heads/main"
 }
 
 resource "databricks_service_principal" "github" {
